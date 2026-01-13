@@ -376,17 +376,21 @@ const Checkout = () => {
                   </div>
                   <div>
                     <Label htmlFor="phone" className="text-small text-muted-foreground">
-                      Phone
+                      Phone (10 digits, e.g., 9876543210)
                     </Label>
                     <Input
                       id="phone"
                       name="phone"
                       type="tel"
                       required
+                      placeholder="9876543210"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="mt-1"
+                      className={`mt-1 ${validationErrors.phone ? 'border-red-500' : ''}`}
                     />
+                    {validationErrors.phone && (
+                      <p className="text-micro text-red-500 mt-1">{validationErrors.phone}</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -451,16 +455,21 @@ const Checkout = () => {
                   </div>
                   <div className="w-1/2">
                     <Label htmlFor="pincode" className="text-small text-muted-foreground">
-                      PIN Code
+                      PIN Code (6 digits)
                     </Label>
                     <Input
                       id="pincode"
                       name="pincode"
                       required
+                      placeholder="110001"
+                      maxLength={6}
                       value={formData.pincode}
                       onChange={handleInputChange}
-                      className="mt-1"
+                      className={`mt-1 ${validationErrors.pincode ? 'border-red-500' : ''}`}
                     />
+                    {validationErrors.pincode && (
+                      <p className="text-micro text-red-500 mt-1">{validationErrors.pincode}</p>
+                    )}
                   </div>
                 </div>
               </div>
