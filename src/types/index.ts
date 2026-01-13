@@ -14,6 +14,7 @@ export interface Product {
     waist?: string;
   };
   images: string[];
+  shipping_charge?: number;
   status: 'available' | 'sold';
   createdAt: string;
 }

@@ -21,6 +21,8 @@ interface StoreSettings {
   store_name: string;
   contact_email: string;
   contact_phone: string;
+  shipping_charge: number;
+  free_shipping_threshold: number;
   new_order_notifications: boolean;
   low_stock_alerts: boolean;
   customer_messages: boolean;
@@ -41,6 +43,8 @@ export default function AdminSettings() {
   const [storeName, setStoreName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactPhone, setContactPhone] = useState('');
+  const [shippingCharge, setShippingCharge] = useState(99);
+  const [freeShippingThreshold, setFreeShippingThreshold] = useState(2000);
   const [newOrderNotifications, setNewOrderNotifications] = useState(true);
   const [lowStockAlerts, setLowStockAlerts] = useState(true);
   const [customerMessages, setCustomerMessages] = useState(false);
@@ -115,6 +119,8 @@ export default function AdminSettings() {
       setStoreName(settings.store_name);
       setContactEmail(settings.contact_email);
       setContactPhone(settings.contact_phone);
+      setShippingCharge(settings.shipping_charge || 99);
+      setFreeShippingThreshold(settings.free_shipping_threshold || 2000);
       setNewOrderNotifications(settings.new_order_notifications);
       setLowStockAlerts(settings.low_stock_alerts);
       setCustomerMessages(settings.customer_messages);
@@ -132,6 +138,8 @@ export default function AdminSettings() {
           store_name: storeName,
           contact_email: contactEmail,
           contact_phone: contactPhone,
+          shipping_charge: shippingCharge,
+          free_shipping_threshold: freeShippingThreshold,
           new_order_notifications: newOrderNotifications,
           low_stock_alerts: lowStockAlerts,
           customer_messages: customerMessages,
@@ -365,6 +373,51 @@ export default function AdminSettings() {
                 value={contactPhone}
                 onChange={(e) => setContactPhone(e.target.value)}
               />
+            </div>
+            
+            <Separator className="my-6" />
+            
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-sm font-medium mb-3">Shipping Configuration</h4>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Configure shipping charges for your store
+                </p>
+              </div>
+              
+              <div className="grid gap-2">
+                <Label htmlFor="shippingCharge">Standard Shipping Charge (₹)</Label>
+                <Input
+                  id="shippingCharge"
+                  type="number"
+                  min="0"
+                  value={shippingCharge}
+                  onChange={(e) => setShippingCharge(parseInt(e.target.value) || 0)}
+                />
+                <p className="text-sm text-muted-foreground">
+                  Charge applied to orders below the free shipping threshold
+                </p>
+              </div>
+              
+              <div className="grid gap-2">
+                <Label htmlFor="freeShippingThreshold">Free Shipping Threshold (₹)</Label>
+                <Input
+                  id="freeShippingThreshold"
+                  type="number"
+                  min="0"
+                  value={freeShippingThreshold}
+                  onChange={(e) => setFreeShippingThreshold(parseInt(e.target.value) || 0)}
+                />
+                <p className="text-sm text-muted-foreground">
+                  Orders above this amount qualify for free shipping
+                </p>
+              </div>
+              
+              <div className="bg-muted p-3 rounded-md">
+                <p className="text-sm">
+                  <strong>Example:</strong> With current settings, orders below ₹{freeShippingThreshold.toLocaleString()} will be charged ₹{shippingCharge}, and orders above will get free shipping.
+                </p>
+              </div>
             </div>
           </CardContent>
         </Card>

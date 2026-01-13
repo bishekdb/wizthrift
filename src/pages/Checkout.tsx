@@ -248,7 +248,8 @@ const Checkout = () => {
         return;
       }
 
-      const shipping = total > 2000 ? 0 : 99;
+      // Calculate total shipping from all products
+      const shipping = items.reduce((sum, { product }) => sum + (product.shipping_charge || 0), 0);
       const grandTotal = total + shipping;
 
       // Create order with pending payment status
@@ -344,7 +345,8 @@ const Checkout = () => {
     }
   };
 
-  const shipping = total > 2000 ? 0 : 99;
+  // Calculate total shipping from all products
+  const shipping = items.reduce((sum, { product }) => sum + (product.shipping_charge || 0), 0);
   const grandTotal = total + shipping;
 
   return (

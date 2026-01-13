@@ -44,6 +44,7 @@ interface ProductFormData {
   condition: string;
   price: number;
   original_price: number | null;
+  shipping_charge: number;
   images: string[];
   status: string;
 }
@@ -56,6 +57,7 @@ const initialFormData: ProductFormData = {
   condition: 'new',
   price: 0,
   original_price: null,
+  shipping_charge: 0,
   images: [],
   status: 'available',
 };
@@ -539,6 +541,21 @@ const AdminProducts = () => {
                       }))
                     }
                   />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="shipping_charge">Shipping Charge (₹)</Label>
+                  <Input
+                    id="shipping_charge"
+                    type="number"
+                    min="0"
+                    value={formData.shipping_charge}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, shipping_charge: Number(e.target.value) || 0 }))}
+                    placeholder="0 for free shipping"
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Set to 0 for free shipping on this product
+                  </p>
                 </div>
               </div>
 
