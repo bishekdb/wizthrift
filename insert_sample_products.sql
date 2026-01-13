@@ -22,5 +22,5 @@ INSERT INTO products (name, description, category, size, condition, price, origi
 
 -- Insert default store settings
 INSERT INTO store_settings (store_name, contact_email, contact_phone, new_order_notifications, low_stock_alerts, customer_messages)
-VALUES ('Second Chance Threads', 'contact@secondchancethreads.com', '+1-555-0123', true, true, true)
+VALUES ('WizThrift', 'contact@wizthrift.com', '+1-555-0123', true, true, true)
 ON CONFLICT DO NOTHING;

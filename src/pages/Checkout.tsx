@@ -174,7 +174,7 @@ const Checkout = () => {
         key: razorpayOrder.keyId,
         amount: grandTotal * 100,
         currency: 'INR',
-        name: 'Your Store',
+        name: 'WizThrift',
         description: `Order #${orderId.slice(0, 8)}`,
         order_id: razorpayOrder.orderId,
         prefill: {

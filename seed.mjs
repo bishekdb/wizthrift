@@ -136,8 +136,8 @@ async function seedProducts() {
   const { error: settingsError } = await supabase
     .from('store_settings')
     .insert({
-      store_name: 'Second Chance Threads',
-      contact_email: 'contact@secondchancethreads.com',
+      store_name: 'WizThrift',
+      contact_email: 'contact@wizthrift.com',
       contact_phone: '+1-555-0123',
       new_order_notifications: true,
       low_stock_alerts: true,
