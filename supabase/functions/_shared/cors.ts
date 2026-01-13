@@ -8,11 +8,14 @@ const getAllowedOrigins = (): string[] => {
   if (ALLOWED_ORIGINS_ENV) {
     return ALLOWED_ORIGINS_ENV.split(',').map(origin => origin.trim());
   }
-  // Default development origins only
+  // Default origins including production
   return [
     'http://localhost:3000',
     'http://localhost:5173',
     'http://localhost:8080',
+    'https://wizthrift.app',
+    'https://www.wizthrift.app',
+    'https://wizthrift.vercel.app',
   ];
 };
 
