@@ -9,7 +9,7 @@ export const logger = {
   /**
    * Log info (development only)
    */
-  info: (...args: any[]) => {
+  info: (...args: unknown[]) => {
     if (isDevelopment) {
       console.info(...args);
     }
@@ -18,7 +18,7 @@ export const logger = {
   /**
    * Log warnings (always shown but sanitized in production)
    */
-  warn: (message: string, ...args: any[]) => {
+  warn: (message: string, ...args: unknown[]) => {
     if (isDevelopment) {
       console.warn(message, ...args);
     } else {
@@ -29,7 +29,7 @@ export const logger = {
   /**
    * Log errors (sanitized in production)
    */
-  error: (message: string, error?: any) => {
+  error: (message: string, error?: unknown) => {
     if (isDevelopment) {
       console.error(message, error);
     } else {
@@ -47,7 +47,7 @@ export const logger = {
   /**
    * Log debug info (development only)
    */
-  debug: (...args: any[]) => {
+  debug: (...args: unknown[]) => {
     if (isDevelopment) {
       console.debug(...args);
     }
@@ -58,7 +58,7 @@ export const logger = {
  * Sanitize error for display to user
  * Removes sensitive information
  */
-export const sanitizeError = (error: any): string => {
+export const sanitizeError = (error: unknown): string => {
   if (!error) return 'An unexpected error occurred';
   
   if (typeof error === 'string') {
@@ -69,8 +69,8 @@ export const sanitizeError = (error: any): string => {
       .replace(/[a-f0-9]{32,}/gi, '[HASH]');
   }
   
-  if (error.message) {
-    return sanitizeError(error.message);
+  if (typeof error === 'object' && error !== null && 'message' in error) {
+    return sanitizeError((error as { message: unknown }).message);
   }
   
   return 'An unexpected error occurred';

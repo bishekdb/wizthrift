@@ -19,7 +19,7 @@ export type AuditAction =
 interface AuditLogEntry {
   action: AuditAction;
   user_id: string;
-  details: Record<string, any>;
+  details: Record<string, unknown>;
   ip_address?: string;
   user_agent?: string;
 }
@@ -29,7 +29,7 @@ interface AuditLogEntry {
  */
 export const logAdminAction = async (
   action: AuditAction,
-  details: Record<string, any>
+  details: Record<string, unknown>
 ): Promise<void> => {
   try {
     const { data: { user } } = await supabase.auth.getUser();
