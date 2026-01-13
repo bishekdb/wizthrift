@@ -20,10 +20,10 @@ const Contact = () => {
                 <div>
                   <p className="text-small font-medium">Email</p>
                   <a 
-                    href="mailto:support@example.com" 
+                    href="mailto:wizstorehelp@gmail.com" 
                     className="text-small text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    support@example.com
+                    wizstorehelp@gmail.com
                   </a>
                 </div>
               </div>
@@ -33,10 +33,10 @@ const Contact = () => {
                 <div>
                   <p className="text-small font-medium">Phone</p>
                   <a 
-                    href="tel:+919876543210" 
+                    href="tel:+918117096317" 
                     className="text-small text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    +91 98765 43210
+                    +91 81170 96317
                   </a>
                 </div>
               </div>
@@ -46,9 +46,8 @@ const Contact = () => {
                 <div>
                   <p className="text-small font-medium">Address</p>
                   <p className="text-small text-muted-foreground">
-                    123 Fashion Street<br />
-                    Mumbai, Maharashtra 400001<br />
-                    India
+                    Suddhowala, Dehradun<br />
+                    Uttarakhand, India
                   </p>
                 </div>
               </div>

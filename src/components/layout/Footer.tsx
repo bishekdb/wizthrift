@@ -191,8 +191,8 @@ export function Footer() {
             <Link to="/shipping" className="text-micro text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/returns" className="text-micro text-muted-foreground hover:text-foreground transition-colors">
-              Terms of Service
+            <Link to="/terms" className="text-micro text-muted-foreground hover:text-foreground transition-colors">
+              Terms & Conditions
             </Link>
           </div>
         </div>
